@@ -36,7 +36,7 @@ bun test
 ```
 
 - `bun validate` — valida el catálogo contra el esquema (job CI `quality`).
-- `bun test` — tests de `packages/core` y el workspace (job CI `test`).
+- El job CI `test` corre un subconjunto unitario (schema, helpers, cliente SDK). El `bun test` completo del workspace incluye auditorías del dataset vivo y el snapshot generado del SDK; hoy fallan en el `dev` del upstream y no se reescriben en este fork.
 - El job `smoke` comprueba que existen los ficheros P0 y que `models.json` es JSON válido.
 
 Si mueves campos de provider a `models/`, compara la salida generada:

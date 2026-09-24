@@ -8,5 +8,5 @@ Formato inspirado en [Keep a Changelog](https://keepachangelog.com/es/1.1.0/).
 
 ### Added
 
-- Alineación P0 mínima al contrato de repositorio (fork): aviso en README, SECURITY, CONTRIBUTING, CHANGELOG, CODEOWNERS, plantillas de issue/PR y CI `quality` / `test` / `smoke` ligero.
+- Alineación P0 mínima al contrato de repositorio (fork): aviso en README, SECURITY, CONTRIBUTING, CHANGELOG, CODEOWNERS, plantillas de issue/PR y CI `quality` / `test` / `smoke` ligero (`test` = unitarios; no el `bun test` completo del dataset).
 - Los workflows de deploy, sync y publicación del SDK del upstream se dejan gated a `anomalyco/models.dev`.
