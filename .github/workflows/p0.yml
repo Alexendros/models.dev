@@ -1,0 +1,79 @@
+# CI P0 de este fork. No sustituye ni activa Deploy / Sync / Publish del upstream.
+# Esos workflows siguen gated a anomalyco/models.dev.
+name: P0
+
+on:
+  pull_request:
+    branches: [dev]
+  push:
+    branches: [dev]
+
+jobs:
+  quality:
+    if: github.repository == 'Alexendros/models.dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Validate catalog
+        run: bun validate
+
+  test:
+    if: github.repository == 'Alexendros/models.dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      # Full `bun test` also audits the live catalog (weights links, sync
+      # fixtures) and the generated SDK snapshot. Those fail on current
+      # upstream `dev` and are out of scope for this fork's P0.
+      - name: Unit tests (schema, helpers, SDK client)
+        run: >
+          bun test
+          packages/core/test/schema.test.ts
+          packages/core/test/auto-merge.test.ts
+          packages/core/test/family.test.ts
+          packages/core/test/empiriolabs.test.ts
+          packages/sdk/test/client.test.ts
+          packages/sdk/test/effect.test.ts
+
+  smoke:
+    if: github.repository == 'Alexendros/models.dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: P0 contractual files
+        run: |
+          test -f README.md
+          test -f LICENSE
+          test -f SECURITY.md
+          test -f CONTRIBUTING.md
+          test -f CHANGELOG.md
+          test -f .github/CODEOWNERS
+          test -f .github/PULL_REQUEST_TEMPLATE.md
+          test -f .github/ISSUE_TEMPLATE/config.yml
+          test -f .github/ISSUE_TEMPLATE/bug.md
+          test -f .github/ISSUE_TEMPLATE/feature.md
+
+      - name: models.json is JSON
+        run: python3 -c "import json; json.load(open('models.json'))"

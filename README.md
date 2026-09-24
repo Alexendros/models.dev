@@ -10,6 +10,14 @@
 
 ---
 
+### Propósito de este documento
+
+- **Objetivos:** Presentar el catálogo, la API pública y cómo contribuir metadatos TOML de labs y providers.
+- **Estructura:** Aviso de fork → API → contribución (models/providers) → validación → esquema → frontend.
+- **Contenido a integrar según contexto:** Conserva las instrucciones de TOML y `base_model`. Este repositorio es un **fork** de [anomalyco/models.dev](https://github.com/anomalyco/models.dev); no reescribas el producto ni el dataset. La rama por defecto de este fork es `dev`.
+
+> **Fork.** `Alexendros/models.dev` sigue el catálogo y las herramientas de [anomalyco/models.dev](https://github.com/anomalyco/models.dev). No despliega models.dev ni publica el SDK. Política de seguridad: [SECURITY.md](SECURITY.md). Cómo contribuir en este fork: [CONTRIBUTING.md](CONTRIBUTING.md). Historial: [CHANGELOG.md](CHANGELOG.md).
+
 [Models.dev](https://models.dev) is a comprehensive open-source database of AI model specifications, pricing, and capabilities.
 
 There's no single database with information about all the available AI models. We started Models.dev as a community-contributed project to address this. We also use it internally in [opencode](https://opencode.ai).
@@ -47,6 +55,8 @@ curl https://models.dev/logos/{provider}.svg
 Replace `{provider}` with the **Provider ID** (e.g., `anthropic`, `openai`, `google`). If we don't have a provider's logo, a default logo is served instead.
 
 ## Contributing
+
+On this fork, start with [CONTRIBUTING.md](CONTRIBUTING.md) (default branch `dev`, `bun validate`, security channel). The data guide below is unchanged from upstream.
 
 The data is stored in the repo as TOML files; organized by provider and model. The logo is stored as an SVG. This is used to generate this page and power the API.
 
