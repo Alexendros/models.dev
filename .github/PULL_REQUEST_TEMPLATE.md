@@ -12,7 +12,7 @@
 
 ## Checklist
 
-- [ ] `bun validate` y `bun test`
+- [ ] `bun validate` (job `quality`) y el subconjunto unitario del job `test`
 - [ ] Si toca TOML de lab/provider: sigue [AGENTS.md](../AGENTS.md) (`base_model`, override-only, USD/MTok)
 - [ ] Docs actualizadas (`README.md` o esta guía) si cambia el contrato de contribución
 - [ ] Sin secretos, `.env` ni reescritura del dataset ajena al alcance

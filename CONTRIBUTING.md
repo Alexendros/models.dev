@@ -32,7 +32,7 @@ Cambios de catálogo (TOML de labs o providers) siguen las reglas de [AGENTS.md]
 
 ```bash
 bun validate
-bun test
+bun test packages/core/test/schema.test.ts packages/core/test/auto-merge.test.ts packages/core/test/family.test.ts packages/core/test/empiriolabs.test.ts packages/sdk/test/client.test.ts packages/sdk/test/effect.test.ts
 ```
 
 - `bun validate` — valida el catálogo contra el esquema (job CI `quality`).
